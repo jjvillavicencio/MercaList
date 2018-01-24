@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>
+        Supermercados
+      </ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>
+      Seleccione su ciudad
+    </ion-label>
+    <ion-select [(ngModel)]="ubicacion" (ionChange)="seleccionCiudad(ubicacion)">
+      <ion-option value="Loja">Loja</ion-option>
+      <ion-option value="Catamayo">Catamayo</ion-option>
+
+    </ion-select>
+  </ion-item>
+<br>
+  <ion-list>
+    <ion-list-header>
+      Escoja un supermercado:
+    </ion-list-header>
+    <button ion-item detail-push no-lines (click)="nuevaLista(super)" *ngFor='let super of locales'>
+        <img src="{{super.logo}}" onerror="this.src='http://www.esferatic.com/wp-content/uploads/2010/12/supermercado-150px.png'" height="40px" width="auto" item-start alt="">
+        {{super.nombre}}
+        <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+    </button>
+  </ion-list>
+
+</ion-content>

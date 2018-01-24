@@ -1,14 +1,51 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar color="secondary">
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      
+      <ion-title>
+        <ion-icon name="cart"></ion-icon>MercaList
+      </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+<ion-content>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url('+ perfil.coverImagen + ')'}"></div>
+
+  <div id="content">
+    <div id="profile-info" padding>
+      <img [src]="perfil.imagenPerfil" id="profile-image">
+      <h3 id="profile.name">{{perfil.nombre}}</h3>
+      <p>{{perfil.ciudad}}</p>
+    </div>
+    <hr>
+    <ion-row class="profile-numbers">
+      <ion-col col-6>
+        <p>Compras</p>
+        <span>{{perfil.compras}}</span>
+      </ion-col>
+      <ion-col col-6>
+        <p>Listas</p>
+        <span>{{perfil.listas}}</span>
+      </ion-col>
+
+    </ion-row>
+    <div id="opciones" padding>
+      <button ion-button block color="secondary" icon-only (click)="irPagina('SupermercadosPage')">
+        <ion-icon name="create"></ion-icon>
+        Crear lista
+      </button>
+      <button ion-button block color="secondary" icon-only>
+        <ion-icon name="list"></ion-icon>
+        Mis listas
+      </button>
+      <button ion-button block color="secondary" icon-only>
+        <ion-icon name="cog"></ion-icon>
+        Configuraciones
+      </button>
+    </div>
+  </div>
 </ion-content>

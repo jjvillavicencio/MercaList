@@ -1,0 +1,76 @@
+<ion-content>
+  <ion-header>
+    <ion-navbar>
+    </ion-navbar>
+  </ion-header>
+
+  <img src="assets/imgs/logo.svg " alt="" class="logo">
+  <div padding>
+    <ion-item>
+      <ion-input type="text" placeholder="Usuario" [(ngModel)]="usuario.correo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" placeholder="Contraseña" [(ngModel)]="usuario.password"></ion-input>
+    </ion-item>
+    <button ion-button block outline (click)="ingreso(usuario)" color="light" class="login-button">
+      Ingresar
+    </button>
+    <div class="recuperar-pass-container">
+      <span (click)="recuperarPass(usuario)">¿Olvidaste la contraseña?</span>
+    </div>
+  </div>
+  <div class="strike">
+    <span>Ó</span>
+  </div>
+  <button ion-button block clear (click)="social('facebook')" color="light" class="login-button">
+    <ion-icon name="logo-facebook"></ion-icon>
+    Ingresar con Facebook
+  </button>
+  <button ion-button block clear (click)="social('google')" color="light" class="login-button">
+    <ion-icon name="logo-google"></ion-icon>
+    Ingresar con Google
+  </button>
+  <button ion-button block clear (click)="social('twitter')" color="light" class="login-button">
+    <ion-icon name="logo-twitter"></ion-icon>
+    Ingresar con Twitter
+  </button>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="footer">
+    <div (click)="registro()">
+      <span>
+        ¿No tienes una cuenta?
+        <strong>Regístrate</strong>.
+      </span>
+
+    </div>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Correo electrónico</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Contraseña</ion-label>
+    <ion-input type="password" [(ngModel)]="usuario.password"></ion-input>
+  </ion-item>
+
+  <button ion-button (click)="ingreso(usuario)">Login</button>
+  <button ion-button color="light" (click)="registro(usuario)">Register</button>
+</ion-content> -->
