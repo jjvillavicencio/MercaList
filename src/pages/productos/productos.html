@@ -1,0 +1,57 @@
+<!--
+  Generated template for the ProductosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>
+      Lista de productos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-segment color="secondary" [(ngModel)]="tipo_listado">
+    <ion-segment-button value="todos">
+      Todos
+    </ion-segment-button>
+    <ion-segment-button value="categorias">
+      Categorías
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div [ngSwitch]="tipo_listado">
+      <ion-list *ngSwitchCase="'todos'">
+        <ion-item style="text-align: center; color: darkgrey">
+            <ion-icon name="sad" style="font-size: 26rem"></ion-icon>
+          <h2>Nada por aquí</h2>
+        </ion-item>
+      </ion-list>
+    
+      <div *ngSwitchCase="'categorias'">
+          <ion-row>
+              <ion-col *ngFor="let categoria of categorias" col-6>
+                <ion-card>
+                  <ion-card-header color="secondary">
+                    {{categoria.ctgr_nombre}}
+                  </ion-card-header>
+                  <ion-card-content>
+          
+                    <img src="{{categoria.ctgr_imagen}}">
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </div>
+    </div>
+
+
+
+
+
+  
+</ion-content>
