@@ -25,4 +25,9 @@ export class NuevaListaPage {
     
   }
 
+  addProductos(){
+    console.log('acuaaa');
+    
+    this.navCtrl.push('ProductosPage', {supermercadoId: this.supermercado})
+  }
 }
