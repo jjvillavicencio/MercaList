@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Usuario } from "../../models/usuario";
 import { AngularFireAuth } from "angularfire2/auth";
@@ -18,6 +18,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private angularFireAuth: AngularFireAuth,
+    private alertCtrl: AlertController,
   ) {
   }
 
@@ -38,38 +39,19 @@ export class LoginPage {
         }
         );
     } catch (e) {
-      console.error('Ingreso:', e.code);
+      console.error('Ingreso:', e);
+      let alert = this.alertCtrl.create({
+        title: 'Error de ingreso',
+        subTitle: 'Usuario y/o contraseña inválidos.',
+        buttons: ['Aceptar']
+      });
+      alert.present();
     }
   }
 
-  async registro(usuario: Usuario) {
-    try {
-      await this.angularFireAuth.auth.createUserWithEmailAndPassword(
-        usuario.correo,
-        usuario.password
-      ).then(
-        (res) => {
-          this.sendEmailVerification();
-        },
-        (e) => {
-          console.error(e);
-        }
-        );
-    } catch (e) {
-      console.error(e);
-
-    }
+  async registro() {
+    this.navCtrl.push('RegistroPage');
   }
-
-  async sendEmailVerification() {
-    await this.angularFireAuth.authState.subscribe(user => {
-      user.sendEmailVerification()
-        .then(() => {
-          console.log('email sent');
-        })
-    });
-  }
-
 
   async recuperarPass(usuario) {
     if (!usuario.correo) {

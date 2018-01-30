@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from "@angular/common/http";
 
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from "angularfire2/auth";
@@ -11,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { environment } from "../environments/environment";
 import { MyApp } from './app.component';
+import { WebServiceProvider } from '../providers/web-service/web-service';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { MyApp } from './app.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -30,7 +33,8 @@ import { MyApp } from './app.component';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WebServiceProvider
   ]
 })
 export class AppModule {}

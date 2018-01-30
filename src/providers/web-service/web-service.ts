@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -24,6 +24,28 @@ export class WebServiceProvider {
         console.error('getCategorias', err);
 
       })
+    })
+  }
+
+  uploadImagur(imagen) {
+    let datosImagen = {
+      image: ''+imagen,
+      title: 'mercalist',
+    }
+    return new Promise(resolve => {
+      this.http.post('https://api.imgur.com/3/image', datosImagen, {
+        headers: new HttpHeaders().set('Authorization', 'Client-ID 35aca59ed37ab01'),
+      }).subscribe(
+        (data) => {
+          resolve(data);
+          console.log('imagur', data);
+
+        },
+        (err) => {
+          console.error('imagur', err);
+
+        }
+      )
     })
   }
 }
